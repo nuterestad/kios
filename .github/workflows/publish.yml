@@ -92,6 +92,15 @@ jobs:
 
             adb logcat -c
             adb shell svc wifi enable
+            echo "Runner CPUs:"
+            nproc
+            lscpu
+
+            echo "Emulator model and CPU:"
+            adb shell getprop ro.product.model || true
+            adb shell nproc
+            adb shell cat /proc/cpuinfo
+
             sleep 10
 
             adb install -r app/build/outputs/apk/debug/app-debug.apk
